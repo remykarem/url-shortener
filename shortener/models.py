@@ -1,0 +1,13 @@
+from sqlalchemy import Column, Integer, String
+from .database import Base
+
+
+class Url(Base):
+    __tablename__ = "urls"
+
+    id = Column(Integer, primary_key=True)
+    link = Column(String)
+    short = Column(String)
+
+    def __repr__(self):
+        return f"Url(link={self.link}, short={self.short})"
