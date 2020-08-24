@@ -3,11 +3,11 @@ from . import models
 from . import schemas
 
 
-def get_urls(db: Session):
+def get_urls(db: Session) -> list:
     return db.query(models.Url).all()
 
 
-def create_url(db: Session, url: schemas.Url):
+def create_url(db: Session, url: schemas.Url) -> models.Url:
     hsh = hash(url.link)
     url = models.Url(link=url.link, short=hsh)
     db.add(url)
@@ -15,6 +15,7 @@ def create_url(db: Session, url: schemas.Url):
     db.refresh(url)
     return url
 
-def get_url(db: Session, short: str):
-    url: str = db.query(models.Url).filter(models.Url.short == short).first()
+
+def get_url(db: Session, short: str) -> str:
+    url = db.query(models.Url).filter(models.Url.short == short).first()
     return url
