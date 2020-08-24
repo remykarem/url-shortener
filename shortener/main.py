@@ -1,3 +1,5 @@
+from typing import List
+
 from fastapi import FastAPI, Depends
 from sqlalchemy.orm import Session  # for typing
 
@@ -24,7 +26,7 @@ def index():
     return {"Hello": "World"}
 
 
-@app.get("/urls/")
+@app.get("/urls/", response_model=List[schemas.Url])
 def read_urls(db: Session = Depends(get_db)):
     urls = crud.get_urls(db)
     return urls
