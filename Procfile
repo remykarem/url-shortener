@@ -1,1 +1,1 @@
-web: uvicorn shortener.main:app
+web: uvicorn shortener.main:app --port $PORT
