@@ -26,17 +26,17 @@ def index():
     return {"Hello": "World"}
 
 
-@app.get("/urls/", response_model=List[schemas.Url])
+@app.get("/urls/", response_model=List[schemas.UrlRead])
 def read_urls(db: Session = Depends(get_db)):
     urls = crud.get_urls(db)
     return urls
 
 
 @app.post("/urls/")
-def create_url(url: schemas.Url, db: Session = Depends(get_db)):
+def create_url(url: schemas.UrlBase, db: Session = Depends(get_db)):
     return crud.create_url(db=db, url=url)
 
 
-@app.get("/{short}")
+@app.get("/{short}", response_model=schemas.UrlRead)
 def get_url(short: str, db: Session = Depends(get_db)):
     return crud.get_url(db=db, short=short)

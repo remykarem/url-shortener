@@ -3,11 +3,11 @@ from . import models
 from . import schemas
 
 
-def get_urls(db: Session) -> list:
+def get_urls(db: Session) -> [schemas.UrlRead]:
     return db.query(models.Url).all()
 
 
-def create_url(db: Session, url: schemas.Url) -> models.Url:
+def create_url(db: Session, url: schemas.UrlBase) -> models.Url:
     hsh = hash(url.link)
     url = models.Url(link=url.link, short=hsh)
     db.add(url)
