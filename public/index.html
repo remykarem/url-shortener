@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Short'ner</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1 class="red">URL Short'ner</h1>
+    <div id="app">
+        <p>Type a URL here!</p>
+        <input v-model="link">
+        <button v-on:click="shorten">Send</button>
+        <p>{{ shortened }}</p>
+    </div>
+    <script src="./public/script.js"></script>
+</body>
+
+</html>
