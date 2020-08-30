@@ -7,8 +7,8 @@ def get_urls(db: Session) -> [schemas.UrlRead]:
     return db.query(models.Url).all()
 
 
-def create_url(db: Session, url: schemas.UrlBase) -> models.Url:
-    hsh = hash(url.link)
+def create_url(db: Session, url: schemas.UrlCreate) -> models.Url:
+    hsh = str(hash(url.link))
     url = models.Url(link=url.link, short=hsh)
     db.add(url)
     db.commit()
