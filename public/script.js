@@ -2,16 +2,18 @@ var app = new Vue({
     el: '#app',
     data: {
         link: 'Hello Vue!',
-        shortened: '',
+        shortLink: '',
     },
     methods: {
         shorten: function (event) {
-            this.shortened = this.link + 'shortened';
+            const vm = this;
             axios.post('/urls/', {
-                link: this.link
+                raw: this.link
             })
                 .then(function (response) {
-                    console.log(response)
+                    console.log(response);
+                    console.log(response.data.shortLink);
+                    vm.shortLink = response.data.shortLink;
                 })
                 .catch(function (error) {
                     console.log(error)
