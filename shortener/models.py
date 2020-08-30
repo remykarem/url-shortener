@@ -10,4 +10,4 @@ class Url(Base):
     short = Column(String)
 
     def __repr__(self):
-        return f"Url(link={self.link}, short={self.short})"
+        return f"Url(link='{self.link}', short='{self.short}')"
