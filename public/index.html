@@ -3,6 +3,7 @@
 
 <head>
     <title>Short'ner</title>
+    <link href="./public/style.css" rel="stylesheet" type="text/css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 </head>
@@ -13,7 +14,7 @@
         <p>Type a URL here!</p>
         <input v-model="link">
         <button v-on:click="shorten">Send</button>
-        <p>{{ shortened }}</p>
+        <p>{{ shortLink }}</p>
     </div>
     <script src="./public/script.js"></script>
 </body>
