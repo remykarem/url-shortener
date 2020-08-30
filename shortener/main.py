@@ -16,7 +16,7 @@ from . import crud
 Base.metadata.create_all(bind=engine)
 
 HOSTNAME = os.getenv(
-    "HOSTNAME", "http://whispering-hamlet-28439.herokuapp.com/")
+    "HOSTNAME", "https://whispering-hamlet-28439.herokuapp.com/")
 
 app = FastAPI()
 app.mount("/public", StaticFiles(directory="public"), name="public")
