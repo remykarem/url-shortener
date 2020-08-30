@@ -1,4 +1,3 @@
-from typing import Optional
 from pydantic import BaseModel
 
 
@@ -12,3 +11,7 @@ class UrlRead(UrlBase):
 
     class Config:
         orm_mode = True
+
+
+class UrlCreate(BaseModel):
+    link: str
