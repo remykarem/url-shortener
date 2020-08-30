@@ -6,8 +6,8 @@ class Url(Base):
     __tablename__ = "urls"
 
     id = Column(Integer, primary_key=True)
-    link = Column(String)
-    short = Column(String)
+    raw = Column(String)
+    hsh = Column(String)
 
     def __repr__(self):
-        return f"Url(link='{self.link}', short='{self.short}')"
+        return f"Url(raw='{self.raw}', hsh='{self.hsh}')"

@@ -1,3 +1,4 @@
+import os
 from typing import List
 
 from fastapi import FastAPI, Depends
@@ -13,6 +14,9 @@ from . import schemas
 from . import crud
 
 Base.metadata.create_all(bind=engine)
+
+HOSTNAME = os.getenv(
+    "HOSTNAME", "http://whispering-hamlet-28439.herokuapp.com/")
 
 app = FastAPI()
 app.mount("/public", StaticFiles(directory="public"), name="public")
@@ -45,12 +49,18 @@ def read_urls(db: Session = Depends(get_db)):
 
 
 @app.post("/urls/")
-def create_url(url: schemas.UrlCreate, db: Session = Depends(get_db)):
-    crud.create_url(db=db, url=url)
-    return {"status": 1}
+def create_short_link(url: schemas.UrlCreate, db: Session = Depends(get_db)):
+    short = crud.create_short(db=db, url=url)
+    url_short_link = f"{HOSTNAME}{short}"
+    return {"shortLink": url_short_link}
 
 
 @app.get("/{short}", response_model=schemas.UrlRead)
-def get_url(short: str, db: Session = Depends(get_db)):
-    url = crud.get_url(db=db, short=short)
-    return RedirectResponse(url=f"http://{url.link}")
+def redirect(short: str, db: Session = Depends(get_db)):
+    hsh = short.replace("-", "")
+    url = crud.get_url(db=db, hsh=hsh)
+    if url.raw.startswith("http://"):
+        return RedirectResponse(url=f"{url.raw}")
+    else:
+        return RedirectResponse(url=f"http://{url.raw}")
+        
