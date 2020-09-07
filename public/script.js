@@ -1,7 +1,7 @@
 var app = new Vue({
     el: '#app',
     data: {
-        link: 'Hello Vue!',
+        link: 'tech.gov.sssg',
         shortLink: '',
     },
     methods: {

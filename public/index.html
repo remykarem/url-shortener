@@ -3,18 +3,19 @@
 
 <head>
     <title>Short'ner</title>
-    <link href="./public/style.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
 </head>
 
 <body>
-    <h1 class="red">URL Short'ner</h1>
-    <div id="app">
-        <p>Type a URL here!</p>
-        <input v-model="link">
-        <button v-on:click="shorten">Send</button>
-        <p>{{ shortLink }}</p>
+    <div class="uk-padding-large" id="app">
+        <h1 class="uk-heading-medium">URL Short'ner</h1>
+        <input class="uk-input" type="text" v-model="link">
+        <button v-on:click="shorten" class="uk-button uk-button-default">Shorten</button>
+        <p class="uk-text">{{ shortLink }}</p>
     </div>
     <script src="./public/script.js"></script>
 </body>
