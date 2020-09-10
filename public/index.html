@@ -4,6 +4,7 @@
 <head>
     <title>Short'ner</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="./public/style.css" />
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
@@ -12,10 +13,20 @@
 
 <body>
     <div class="uk-padding-large" id="app">
-        <h1 class="uk-heading-medium">URL Short'ner</h1>
-        <input class="uk-input" type="text" v-model="link">
-        <button v-on:click="shorten" class="uk-button uk-button-default">Shorten</button>
-        <p class="uk-text">{{ shortLink }}</p>
+        <p class="uk-heading-small uk-text-center" style="margin-top: 60px;">URL Short'ner</p>
+        <div style="margin-bottom: 12px;">
+            <input class="uk-input" type="text" v-model="link" style="text-align:center;">
+        </div>
+        <div style="text-align:center; margin-bottom: 40px;">
+            <button v-on:click="shorten" class="uk-button uk-button-default" style="text-align:center;">Shorten</button>
+        </div>
+        <hr class="uk-divider-icon">
+        <p class="uk-text uk-text-center">{{ shortLink }}</p>
+        <div style="text-align:center; margin-bottom: 40px;">
+            <button class="uk-button uk-button-default" style="text-align:center;">Copy to clipboard</button>
+        </div>
+        <hr class="uk-divider-icon">
+
     </div>
     <script src="./public/script.js"></script>
 </body>
