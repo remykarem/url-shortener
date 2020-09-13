@@ -25,6 +25,6 @@ class UrlCreate(BaseModel):
 
 def hasher(url_raw: UrlRaw) -> Tuple[UrlHash, UrlShort]:
     url_hash = hash(url_raw)
-    url_hash = str(abs(url_hash))[:12]
-    url_short = f"{url_hash[:4]}-{url_hash[4:8]}-{url_hash[8:12]}"
+    url_hash = str(abs(url_hash))[:9]
+    url_short = f"{url_hash[:3]}-{url_hash[3:6]}-{url_hash[6:9]}"
     return url_hash, url_short
