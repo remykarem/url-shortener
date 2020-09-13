@@ -5,3 +5,4 @@ pydantic
 uvicorn
 psycopg2
 aiofiles
+pytest

@@ -38,6 +38,7 @@ def get_db():
 
 @app.get("/")
 def index():
+    print("*******************")
     return FileResponse("public/index.html")
 
 
@@ -57,10 +58,10 @@ def create_short_link(url: schemas.UrlCreate, db: Session = Depends(get_db)):
 
 @app.get("/{short}", response_model=schemas.UrlRead)
 def redirect(short: str, db: Session = Depends(get_db)):
+    print("---------------------")
     hsh = short.replace("-", "")
     url = crud.get_url(db=db, hsh=hsh)
     if url.raw.startswith("http://"):
         return RedirectResponse(url=f"{url.raw}")
     else:
         return RedirectResponse(url=f"http://{url.raw}")
-        
