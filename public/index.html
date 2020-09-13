@@ -13,17 +13,18 @@
 
 <body>
     <div class="uk-padding-large" id="app">
-        <p class="uk-heading-small uk-text-center" style="margin-top: 60px;">URL Short'ner</p>
+        <p class="uk-heading-small uk-text-center" style="margin-top: 60px; margin-bottom: 60px;">Short'n it</p>
         <div style="margin-bottom: 12px;">
             <input class="uk-input" type="text" v-model="link" style="text-align:center;">
         </div>
         <div style="text-align:center; margin-bottom: 40px;">
-            <button v-on:click="shorten" class="uk-button uk-button-default" style="text-align:center;">Shorten</button>
+            <button v-on:click="shorten" class="uk-button uk-button-default" style="text-align:center;">Generate link</button>
         </div>
         <hr class="uk-divider-icon">
         <p class="uk-text uk-text-center">{{ shortLink }}</p>
-        <div style="text-align:center; margin-bottom: 40px;">
-            <button class="uk-button uk-button-default" style="text-align:center;">Copy to clipboard</button>
+        <div style="text-align:center;">
+            <em><p v-if="!shortLink" class="uk-text-muted uk-text-center">Short's the new black</p></em>
+            <button v-if="shortLink" class="uk-button uk-button-default" style="text-align:center;">Copy to clipboard</button>
         </div>
         <hr class="uk-divider-icon">
 
