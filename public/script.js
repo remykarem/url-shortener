@@ -28,7 +28,7 @@ var app = new Vue({
         copyToClipboard: function (event) {
             var text = document.getElementById('short-link');
             var range = document.createRange();
-            
+
             window.getSelection().removeAllRanges();
             range.selectNode(text);
             window.getSelection().addRange(range);
