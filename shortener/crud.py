@@ -16,6 +16,14 @@ def create_short(db: Session, url: schemas.UrlCreate) -> schemas.UrlShort:
     return url_short
 
 
-def get_url(db: Session, hsh: str) -> str:
-    url = db.query(models.Url).filter(models.Url.hsh == hsh).first()
-    return url
+def get_raw(db: Session, hsh: str) -> models.Url:
+    raw = db.query(models.Url).filter(models.Url.hsh == hsh).first()
+    return raw
+
+
+def get_short(db: Session, raw: str) -> schemas.UrlShort:
+    url = db.query(models.Url).filter(models.Url.raw == raw).first()
+    if url:
+        return schemas.hash_to_short(url.hsh)
+    else:
+        return None
