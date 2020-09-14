@@ -1,4 +1,4 @@
-# URL Shortener
+# Short'ner
 
 ![preview](preview.gif)
 
