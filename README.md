@@ -2,7 +2,7 @@
 
 ![preview](preview.gif)
 
-URL shortener written using Python's FastAPI framework, Vue.js and UIKit. The FastAPI framework uses SQLAlchemy for ORM. The database used is a Postgresql.
+URL shortener written using Python's FastAPI framework, Vue.js and UIKit. The FastAPI framework uses SQLAlchemy for ORM. Data is persisted in Postgresql.
 
 The app is available at https://whispering-hamlet-28439.herokuapp.com/.
 
