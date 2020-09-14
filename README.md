@@ -6,6 +6,8 @@ The app is available at https://whispering-hamlet-28439.herokuapp.com/.
 
 ## Dev
 
+Install the Python dependencies
+
 ```python
 pip install -r requirements.txt
 ```
