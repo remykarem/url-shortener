@@ -38,7 +38,6 @@ def get_db():
 
 @app.get("/")
 def index():
-    print("*******************")
     return FileResponse("public/index.html")
 
 
@@ -51,20 +50,19 @@ def read_urls(db: Session = Depends(get_db)):
 
 @app.post("/urls/")
 def create_short_link(url: schemas.UrlCreate, db: Session = Depends(get_db)):
-    short = crud.create_short(db=db, url=url)
+    short = crud.get_short(db=db, raw=url.raw)
+    if short is None:
+        short = crud.create_short(db=db, url=url)
     url_short_link = f"{HOSTNAME}{short}"
     return {"shortLink": url_short_link}
 
 
 @app.get("/{short}", response_model=schemas.UrlRead)
 def redirect(short: str, db: Session = Depends(get_db)):
-    print("---------------------")
     hsh = short.replace("-", "")
-    url = crud.get_url(db=db, hsh=hsh)
-    if url:
-        if url.raw.startswith("http://"):
-            return RedirectResponse(url=f"{url.raw}")
-        else:
-            return RedirectResponse(url=f"http://{url.raw}")
-    else:
+    url = crud.get_raw(db=db, hsh=hsh)
+
+    if url is None:
         return FileResponse("public/404.html", status_code=404)
+
+    return RedirectResponse(url=f"{url.raw}")
