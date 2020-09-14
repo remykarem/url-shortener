@@ -65,4 +65,7 @@ def redirect(short: str, db: Session = Depends(get_db)):
     if url is None:
         return FileResponse("public/404.html", status_code=404)
 
-    return RedirectResponse(url=f"{url.raw}")
+    if url.raw.startswith(("http://", "https://")):
+        return RedirectResponse(url=f"{url.raw}")
+    else:
+        return RedirectResponse(url=f"http://{url.raw}")
