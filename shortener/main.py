@@ -61,7 +61,10 @@ def redirect(short: str, db: Session = Depends(get_db)):
     print("---------------------")
     hsh = short.replace("-", "")
     url = crud.get_url(db=db, hsh=hsh)
-    if url.raw.startswith("http://"):
-        return RedirectResponse(url=f"{url.raw}")
+    if url:
+        if url.raw.startswith("http://"):
+            return RedirectResponse(url=f"{url.raw}")
+        else:
+            return RedirectResponse(url=f"http://{url.raw}")
     else:
-        return RedirectResponse(url=f"http://{url.raw}")
+        return FileResponse("public/404.html", status_code=404)

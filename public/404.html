@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Short'ner</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/css/uikit.min.css" />
+    <link rel="stylesheet" href="./public/style.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.5.7/dist/js/uikit-icons.min.js"></script>
+</head>
+
+<body>
+    <div class="uk-padding-large" id="app">
+        <p class="uk-heading-small uk-text-center" style="color: #444; margin-top: 60px; margin-bottom: 60px;">Short'ner
+        </p>
+
+        <hr class="uk-divider-icon">
+        <div style="text-align:center;">
+            <em>
+                <p v-if="!shortLink & !loading" class="uk-text-muted uk-text-center">Short and sweet, but not found</p>
+            </em>
+        </div>
+        <hr class="uk-divider-icon">
+
+    </div>
+    <script src="./public/script.js"></script>
+</body>
+
+</html>
